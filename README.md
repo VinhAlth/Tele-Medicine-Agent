@@ -63,9 +63,8 @@ Hệ thống hoạt động hoàn toàn trên **app/web + LiveKit**.
 ---
 
 ## ⚙️ Kiến trúc hệ thống
-
+<img width="1058" height="276" alt="image" src="https://github.com/user-attachments/assets/93de3481-44f5-42c1-85b2-62c096d1d4b1" />
 ```
-<img width="1058" height="276" alt="image" src="https://github.com/user-attachments/assets/fe6c93bb-efb4-4a2c-846f-63c24811dc02" />
 
 [App/Web] → [LiveKit Server] → [Backend]
 ↘ Tele Agent          ↘ Record Agent
