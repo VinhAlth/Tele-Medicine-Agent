@@ -1,4 +1,4 @@
-# Tele-Medicine-Agent
+<img width="1058" height="276" alt="image" src="https://github.com/user-attachments/assets/93de3481-44f5-42c1-85b2-62c096d1d4b1" /># Tele-Medicine-Agent
 Dự án **Tele Medician Agent** xây dựng một voicebot và record agent trên nền **LiveKit + App/Web**.   Hệ thống giúp tiếp nhận bệnh nhân, hỗ trợ đăng ký phiếu khám, tạo mã bệnh nhân để vào phòng khám, nhắc nhở trước giờ hẹn, và ghi lại nội dung tư vấn giữa bác sĩ và bệnh nhân.  
 # 🏥 Tele Agent System (LiveKit + App/Web)
 
@@ -65,6 +65,7 @@ Hệ thống hoạt động hoàn toàn trên **app/web + LiveKit**.
 ## ⚙️ Kiến trúc hệ thống
 
 ```
+<img width="1058" height="276" alt="image" src="https://github.com/user-attachments/assets/fe6c93bb-efb4-4a2c-846f-63c24811dc02" />
 
 [App/Web] → [LiveKit Server] → [Backend]
 ↘ Tele Agent          ↘ Record Agent
