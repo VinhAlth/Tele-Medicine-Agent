@@ -1,1 +1,229 @@
-[]
+[
+    {
+        "sid": "PA_WKCWBWdbTA9k",
+        "identity": "record_agent",
+        "state": "ACTIVE",
+        "joined_at": "1762326000",
+        "name": "Trợ lý khám bệnh",
+        "version": 2,
+        "permission": {
+            "can_subscribe": true,
+            "can_publish_data": true,
+            "hidden": true,
+            "can_update_metadata": true,
+            "agent": true
+        },
+        "kind": "AGENT",
+        "joined_at_ms": "1762326000199"
+    },
+    {
+        "sid": "PA_GZjnERVHMAtY",
+        "identity": "công ztbee-20.177629.3219",
+        "state": "ACTIVE",
+        "tracks": [
+            {
+                "sid": "TR_VCAYgbVSAcdx6k",
+                "type": "VIDEO",
+                "name": "camera",
+                "width": 1280,
+                "height": 720,
+                "simulcast": true,
+                "source": "CAMERA",
+                "layers": [
+                    {
+                        "width": 320,
+                        "height": 180,
+                        "bitrate": 160000,
+                        "ssrc": 2385316830
+                    },
+                    {
+                        "quality": "MEDIUM",
+                        "width": 640,
+                        "height": 360,
+                        "bitrate": 450000,
+                        "ssrc": 2469633072
+                    },
+                    {
+                        "quality": "HIGH",
+                        "width": 1280,
+                        "height": 720,
+                        "bitrate": 1700000,
+                        "ssrc": 887954869
+                    }
+                ],
+                "mime_type": "video/VP8",
+                "mid": "1",
+                "codecs": [
+                    {
+                        "mime_type": "video/VP8",
+                        "mid": "1",
+                        "cid": "f5d7c213-7c72-4f74-a5fd-d6af210d17a0",
+                        "layers": [
+                            {
+                                "width": 320,
+                                "height": 180,
+                                "bitrate": 160000,
+                                "ssrc": 2385316830
+                            },
+                            {
+                                "quality": "MEDIUM",
+                                "width": 640,
+                                "height": 360,
+                                "bitrate": 450000,
+                                "ssrc": 2469633072
+                            },
+                            {
+                                "quality": "HIGH",
+                                "width": 1280,
+                                "height": 720,
+                                "bitrate": 1700000,
+                                "ssrc": 887954869
+                            }
+                        ]
+                    }
+                ],
+                "stream": "camera",
+                "version": {
+                    "unix_micro": "1762325964720728"
+                }
+            },
+            {
+                "sid": "TR_AMuRcZAfFP57Ed",
+                "name": "microphone",
+                "source": "MICROPHONE",
+                "mime_type": "audio/opus",
+                "mid": "2",
+                "disable_red": true,
+                "stream": "camera",
+                "version": {
+                    "unix_micro": "1762325964737445"
+                }
+            }
+        ],
+        "joined_at": "1762325961",
+        "version": 7,
+        "permission": {
+            "can_subscribe": true,
+            "can_publish": true,
+            "can_publish_data": true
+        },
+        "is_publisher": true,
+        "joined_at_ms": "1762325961032"
+    },
+    {
+        "sid": "PA_9xRuZj5zrgyz",
+        "identity": "EG_grtYXxvKHaQb",
+        "state": "ACTIVE",
+        "joined_at": "1762326307",
+        "version": 2,
+        "permission": {
+            "can_subscribe": true,
+            "hidden": true,
+            "recorder": true
+        },
+        "kind": "EGRESS",
+        "joined_at_ms": "1762326307807"
+    },
+    {
+        "sid": "PA_NziXUuMm9y9A",
+        "identity": "Bs. Bác sí Giang nè", 
+        "state": "ACTIVE",
+        "tracks": [
+            {
+                "sid": "TR_AMRFRtk4mhB3GC",
+                "source": "MICROPHONE",
+                "mime_type": "audio/red",
+                "mid": "0",
+                "stream": "camera",
+                "version": {
+                    "unix_micro": "1762325973786331"
+                }
+            },
+            {
+                "sid": "TR_VCKUffie2Eijhr",
+                "type": "VIDEO",
+                "width": 1280,
+                "height": 720,
+                "simulcast": true,
+                "source": "CAMERA",
+                "layers": [
+                    {
+                        "width": 384,
+                        "height": 216,
+                        "bitrate": 180000,
+                        "ssrc": 2665340379
+                    },
+                    {
+                        "quality": "MEDIUM",
+                        "width": 960,
+                        "height": 540,
+                        "bitrate": 800000,
+                        "ssrc": 3720915498
+                    },
+                    {
+                        "quality": "HIGH",
+                        "width": 1280,
+                        "height": 720,
+                        "bitrate": 1700000,
+                        "ssrc": 3858724434
+                    }
+                ],
+                "mime_type": "video/VP8",
+                "mid": "1",
+                "codecs": [
+                    {
+                        "mime_type": "video/VP8",
+                        "mid": "1",
+                        "cid": "63fd6df5-3d15-4aab-bab8-b38927561318",
+                        "layers": [
+                            {
+                                "width": 384,
+                                "height": 216,
+                                "bitrate": 180000,
+                                "ssrc": 2665340379
+                            },
+                            {
+                                "quality": "MEDIUM",
+                                "width": 960,
+                                "height": 540,
+                                "bitrate": 800000,
+                                "ssrc": 3720915498
+                            },
+                            {
+                                "quality": "HIGH",
+                                "width": 1280,
+                                "height": 720,
+                                "bitrate": 1700000,
+                                "ssrc": 3858724434
+                            }
+                        ]
+                    }
+                ],
+                "stream": "camera",
+                "version": {
+                    "unix_micro": "1762325974035275"
+                }
+            }
+        ],
+        "joined_at": "1762325972",
+        "version": 6,
+        "permission": {
+            "can_subscribe": true,
+            "can_publish": true,
+            "can_publish_data": true
+        },
+        "is_publisher": true,
+        "joined_at_ms": "1762325972856"
+    }
+]
+cid: "63fd6df5-3d15-4aab-bab8-b38927561318"
+layers {
+  width: 384
+  height: 216
+  bitrate: 180000
+  ssrc: 2665340379
+}
+layers {
+  quality: MEDIUM
+  width: 960
+  height: 540
