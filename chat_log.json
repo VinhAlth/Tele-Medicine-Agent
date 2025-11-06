@@ -1,0 +1,352 @@
+[
+  {
+    "timestamp": "2025-10-30T09:35:51.724194",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha.\n\nAnh, chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:36:47.999284",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:37:04.074781",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ anh,chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:37:06.244539",
+    "speaker": "agent",
+    "message": "Dạ, em là An Tâm – Trợ lý y khoa của Jio Health ạ.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:41:14.964223",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha. Anh, chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:41:39.817486",
+    "speaker": "agent",
+    "message": "Dạ, em xin lỗi, anh, chị có thể nhắc lại họ tên, năm sinh và giới tính giúp em được không ạ? Em chưa nghe rõ ạ."
+  },
+  {
+    "timestamp": "2025-10-30T09:41:43.886202",
+    "speaker": "agent",
+    "message": "Dạ, em chào anh Hối Tan Vòng Trong Tôm ạ. Anh cho em hỏi số điện thoại của anh là gì ạ, để em làm thủ tục đăng ký khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:42:03.648105",
+    "speaker": "agent",
+    "message": ""
+  },
+  {
+    "timestamp": "2025-10-30T09:42:07.573554",
+    "speaker": "agent",
+    "message": "Dạ, bây giờ, em sẽ hỗ trợ anh đặt lịch khám ạ. Em sẽ hỏi một số câu hỏi yêu cầu trong phiếu khám ạ! Anh cho em biết lý do khám bệnh của mình là gì ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:42:27.784786",
+    "speaker": "agent",
+    "message": "Dạ, anh đã biết khám dịch vụ nào chưa ạ? Nếu chưa, em có thể gợi ý dịch vụ khám bệnh phù hợp dựa trên triệu chứng ạ!"
+  },
+  {
+    "timestamp": "2025-10-30T09:42:29.962233",
+    "speaker": "agent",
+    "message": "Dạ, anh có thể mô tả rõ triệu chứng hoặc lý do đi khám không ạ? Ví dụ như anh bị cảm cúm được bao lâu rồi, có đau họng, sổ mũi, hay khó thở không ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:42:51.307546",
+    "speaker": "agent",
+    "message": "Dạ vâng, anh bị cảm cúm vào hôm qua ạ. Ngoài sốt 39 độ và cảm cúm ra, anh có thêm triệu chứng nào khác không ạ, ví dụ như đau họng, sổ mũi, ho, hay mệt mỏi nhiều không ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:42:56.848871",
+    "speaker": "agent",
+    "message": "Dạ vâng, anh bị cảm cúm từ hôm qua và có sốt ạ. Anh có tiền sử bệnh hay dị ứng gì không ạ? Ví dụ như anh có bị hen suyễn, tiểu đường hay dị ứng thuốc gì không ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:43:10.247138",
+    "speaker": "agent",
+    "message": ""
+  },
+  {
+    "timestamp": "2025-10-30T09:43:25.198690",
+    "speaker": "agent",
+    "message": "Dạ, với các triệu chứng cảm cúm và sốt 39 độ, em đề xuất anh nên thực hiện dịch vụ **Khám Bệnh Nội Khoa Tổng Quát** để bác sĩ đánh giá tình trạng và đưa ra phác đồ điều trị phù hợp ạ. Anh có muốn chọn dịch vụ này không ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:43:47.451180",
+    "speaker": "agent",
+    "message": "Dạ vâng, anh muốn khám dịch vụ Khám Bệnh Nội Khoa Tổng Quát ạ. Vậy anh muốn khám ngày nào ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:44:10.576134",
+    "speaker": "agent",
+    "message": "Dạ anh An Tâm nghe ạ. Anh muốn khám dịch vụ Khám Bệnh Nội Khoa Tổng Quát. Vậy anh muốn khám ngày nào ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:45:11.528888",
+    "speaker": "agent",
+    "message": "Dạ anh, em là An Tâm. Anh cho em biết anh muốn khám vào ngày nào để em kiểm tra lịch trống ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:45:32.919779",
+    "speaker": "agent",
+    "message": ""
+  },
+  {
+    "timestamp": "2025-10-30T09:45:35.944664",
+    "speaker": "agent",
+    "message": "Hiện phòng khám trống lúc 9 giờ, 11 giờ, 14 giờ, 16 giờ và 19 giờ. Anh muốn đăng ký giờ nào ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:45:54.930588",
+    "speaker": "agent",
+    "message": "Em xin xác nhận lại: Anh Hối Tan Vòng Trong Tôm, giới tính Nam, sinh năm 1997, SĐT 0918678005, dịch vụ Khám Bệnh Nội Khoa Tổng Quát, lúc 9 giờ ngày 31 tháng 10 năm 2025. Đúng không ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:46:21.989419",
+    "speaker": "agent",
+    "message": ""
+  },
+  {
+    "timestamp": "2025-10-30T09:46:26.807154",
+    "speaker": "agent",
+    "message": "Dạ, anh Hối Tan Vòng Trong Tôm còn cần em hỗ trợ gì nữa không ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:46:42.361874",
+    "speaker": "agent",
+    "message": "Lịch hẹn đã đặt thành công. Anh nhớ tham gia cuộc hẹn trước giờ khám 10 phút vào lúc 09:00 ngày 31 tháng 10 năm 2025 để kiểm tra trạng thái thiết bị trước khi bác sĩ vào nhé! Chúc anh mau khỏe nha!"
+  },
+  {
+    "timestamp": "2025-10-30T09:47:18.768992",
+    "speaker": "agent",
+    "message": ""
+  },
+  {
+    "timestamp": "2025-10-30T09:47:21.414906",
+    "speaker": "agent",
+    "message": "Dạ vâng ạ. Chúc anh có một ngày tốt lành!"
+  },
+  {
+    "timestamp": "2025-10-30T09:47:33.098577",
+    "speaker": "agent",
+    "message": ""
+  },
+  {
+    "timestamp": "2025-10-30T09:50:01.060418",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:50:17.368363",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:50:20.164157",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha. Anh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:50:20.329002",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha. Anh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:50:37.757465",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha.\n\nAnh, chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:50:57.749437",
+    "speaker": "agent",
+    "message": "Dạ, em xin lỗi, em chưa hiểu ý anh, chị ạ. Anh, chị có thể cho em biết rõ hơn là anh, chị muốn em làm gì không ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:51:40.591557",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:58:00.868369",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha.\n\nAnh, chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-30T09:58:36.531595",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T03:40:45.171140",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T03:42:44.239970",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha.\n\nAnh, chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T03:44:30.419994",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha.\n\nanh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T05:14:12.627255",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha.\n\nAnh, chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T05:14:17.213244",
+    "speaker": "agent",
+    "message": "Chào anh, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh đặt lịch khám nha.\n\nAnh cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T05:14:23.650713",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha. Anh, chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T05:14:38.968132",
+    "speaker": "agent",
+    "message": "Chào anh, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh đặt lịch khám nha.\n\nAnh cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T05:14:43.595756",
+    "speaker": "agent",
+    "message": "Chào anh, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh đặt lịch khám nha.\n\nAnh cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T05:14:50.051382",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T05:15:21.179140",
+    "speaker": "agent",
+    "message": "Dạ anh, chị có thể vui lòng cho em biết lại họ tên, năm sinh và giới tính của mình không ạ? Em chưa nghe rõ ạ."
+  },
+  {
+    "timestamp": "2025-10-31T05:16:27.881428",
+    "speaker": "agent",
+    "message": "Dạ, em xin lỗi, em chưa hiểu rõ thông tin anh, chị cung cấp. Anh, chị có thể vui lòng cho em biết họ tên, năm sinh và giới tính của mình không ạ?"
+  },
+  {
+    "timestamp": "2025-10-31T08:06:15.423298",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha. Anh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-03T02:41:27.367152",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha.\n\nAnh, chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-03T02:42:14.040025",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha. Anh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-03T02:42:34.702720",
+    "speaker": "agent",
+    "message": "Dạ anh, chị có thể cho em biết họ tên, năm sinh và giới tính để em tiện hỗ trợ được không ạ?"
+  },
+  {
+    "timestamp": "2025-11-03T02:43:39.393955",
+    "speaker": "agent",
+    "message": "Dạ anh, chị đừng lo lắng ạ, mình cứ bình tĩnh nha.\n\nĐể em có thể hỗ trợ anh, chị đặt lịch khám, anh, chị cho em biết họ tên, năm sinh và giới tính của mình được không ạ?"
+  },
+  {
+    "timestamp": "2025-11-03T02:43:47.680277",
+    "speaker": "agent",
+    "message": "Dạ, em xin lỗi vì chưa thể hiểu rõ câu hỏi của anh, chị ạ. Để em An Tâm có thể hỗ trợ anh, chị đặt lịch khám một cách tốt nhất, anh, chị có thể cho em biết lại họ và tên, năm sinh và giới tính của mình được không ạ? Sau đó, em sẽ hỏi số điện thoại để đăng ký khám ạ."
+  },
+  {
+    "timestamp": "2025-11-03T02:44:04.262897",
+    "speaker": "agent",
+    "message": "Dạ, anh, chị cho em hỏi lại là tên đầy đủ của mình là gì ạ? Em đang cần thông tin này để tiện xưng hô và làm thủ tục đặt lịch khám cho mình ạ."
+  },
+  {
+    "timestamp": "2025-11-03T02:44:32.488234",
+    "speaker": "agent",
+    "message": "Dạ anh, chị vui lòng cho em biết họ tên, năm sinh và giới tính của mình nha, để em có thể hỗ trợ anh, chị đặt lịch khám ạ."
+  },
+  {
+    "timestamp": "2025-11-03T02:50:21.839335",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-03T02:52:45.075276",
+    "speaker": "agent",
+    "message": "Dạ, anh, chị có thể cho em biết rõ hơn về họ tên, năm sinh và giới tính của mình được không ạ? Em chưa rõ tên của anh, chị ạ."
+  },
+  {
+    "timestamp": "2025-11-03T02:53:17.585976",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha.\n\nAnh, chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-03T02:54:20.471180",
+    "speaker": "agent",
+    "message": "Dạ, anh, chị có thể cho em biết lại họ tên đầy đủ, năm sinh và giới tính để em hỗ trợ đặt lịch khám được không ạ?"
+  },
+  {
+    "timestamp": "2025-11-03T02:55:07.978825",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-03T10:03:09.881941",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-05T02:33:55.340361",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-05T02:35:39.329540",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-05T03:03:29.982336",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-05T03:07:50.844524",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha. Anh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-05T04:25:54.085343",
+    "speaker": "agent",
+    "message": "Chào anh, chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh, chị đặt lịch khám nha.\n\nAnh, chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-05T04:26:42.659856",
+    "speaker": "agent",
+    "message": "Dạ, anh, chị có thể cho em biết họ tên, năm sinh và giới tính của mình được không ạ? Em cần thông tin này để hỗ trợ anh, chị đặt lịch khám ạ."
+  },
+  {
+    "timestamp": "2025-11-05T04:27:05.874302",
+    "speaker": "agent",
+    "message": "Dạ, em là An Tâm, trợ lý y khoa của Jio Health. Em ở đây để hỗ trợ anh, chị đặt lịch khám. Anh, chị vui lòng cung cấp họ tên, năm sinh và giới tính để em có thể giúp mình ạ."
+  },
+  {
+    "timestamp": "2025-11-05T04:57:00.799968",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. Em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính để em hỗ trợ đặt khám ạ?"
+  },
+  {
+    "timestamp": "2025-11-05T04:58:24.654872",
+    "speaker": "agent",
+    "message": "Chào anh,chị, em là An Tâm – Trợ lý y khoa của Jio Health. em sẽ giúp anh,chị đặt lịch khám nha.\n\nAnh,chị cho em biết họ tên, năm sinh và giới tính, em sẽ hỗ trợ anh, chị đặt khám ạ?"
+  }
+]

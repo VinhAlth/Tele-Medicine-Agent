@@ -226,7 +226,7 @@ def get_clinics_2():
 @mcp.tool()
 def doctor_advice(user_input: str) -> str:
     """
-    Nhận input là text: tên, tuổi, lý do khám, triệu chứng thu thập được
+    Nhận input là text: tên, tuổi, lý do khám, triệu chứng, tiền sử bệnh và dị ứng (nếu có) thu thập được
     Trả về text: gợi ý dịch vụ khám phù hợp
     """
     try:
@@ -236,7 +236,7 @@ Bạn là một bác sĩ hơn 10 năm kinh nghiệm trong chuẩn đoán và đ�
 - Bệnh nhân cung cấp thông tin: {user_input}
 - mục tiêu của bạn là đưa ra kết quả: các dịch vụ khám phù hợp dựa trên thông tin input
 - Bạn sẽ:
-    1. Đánh giá triệu chứng và tuổi, giới tính,lý do khám bệnh.
+    1. Đánh giá triệu chứng và tuổi, giới tính,lý do khám bệnh, tiền sử bệnh và dị ứng (nếu có) .
     2. Gợi ý dịch vụ phù hợp (ví dụ: khám tổng quát, nội soi, xét nghiệm máu, chụp X quang ...).
     5. trả lời ngắn gọn
 - Trả lời dưới dạng **text**, không JSON
@@ -404,4 +404,4 @@ if __name__ == "__main__":
     # Chạy local trong ứng dụng (off)
     # Nếu muốn expose HTTP thì đổi sang transport="sse"
     #mcp.run(transport="local")
-    mcp.run(transport="sse", host="0.0.0.0", port=9003)
+    mcp.run(transport="sse", host="0.0.0.0", port=9002)

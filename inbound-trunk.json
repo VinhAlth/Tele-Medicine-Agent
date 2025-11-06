@@ -1,0 +1,9 @@
+{
+  "name": "inbound-trunk",
+  "direction": "inbound",
+  "auth": {
+    "username": "103",
+    "password": "123456"
+  },
+  "uri": "sip:45.119.84.196:5060"
+}

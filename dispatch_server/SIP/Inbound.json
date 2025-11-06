@@ -1,0 +1,17 @@
+{
+    "dispatch_rule":
+      {   
+        "rule": {
+          "dispatchRuleIndividual": {
+            "roomPrefix": "Call_Inbound-"
+          }   
+        },  
+        "name": "Inbound rule",
+        "roomConfig": {
+          "agents": [{
+            "agentName": "medical_agent",
+            "metadata": "Inbound rule: Call_Inbound-"
+          }]  
+        }   
+      }   
+}

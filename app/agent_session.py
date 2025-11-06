@@ -1,6 +1,6 @@
 import os
 from livekit.agents import AgentSession
-from livekit.plugins import google, silero#, elevenlabs, openai
+from livekit.plugins import google, silero, openai#, elevenlabs
 from livekit.agents.llm.mcp import MCPServerHTTP
 from datetime import timedelta
 import httpx
@@ -10,7 +10,7 @@ from livekit.plugins.turn_detector.multilingual import MultilingualModel
 async def build_session():
     # MCP server
     mcp = MCPServerHTTP(
-        url="http://localhost:9003/sse",
+        url="http://45.119.86.209:9002/sse",
         timeout=60.0,                # thay vì mặc định 5s
         sse_read_timeout=60.0,     # đọc SSE tối đa 1h
         client_session_timeout_seconds=60.0  # client session timeout 60s
@@ -26,14 +26,10 @@ async def build_session():
     turn_detection=MultilingualModel(),
 
     # STT Google
-    stt=google.STT(
-        languages=["vi-VN"],
-        model="latest_long",
-        punctuate=True,
-        interim_results=True,
-        credentials_file="/root/AGENT/voicebot-booking2/google_key.json",
+    stt= openai.STT(
+        model="gpt-4o-mini-transcribe",  # Hoặc "whisper-1" nếu muốn
+        language="vi",                  # Tiếng Việt
     ),
-
     # LLM Google
     llm=google.LLM(
         model="gemini-2.5-flash",
@@ -47,16 +43,17 @@ async def build_session():
     #),
 
         # TTS OpenAI
-    #tts=openai.TTS(
-       # model="tts-1-hd",
-        #voice="nova"
-       # ),    
-    tts=google.TTS(
-       voice_name="en-US-Chirp3-HD-Leda",
-       credentials_file="/root/AGENT/voicebot-booking2/google_key.json",
-       speaking_rate=1.15,
-   ),
+    tts=openai.TTS(
+       model="tts-1-hd",
+       voice="nova"
+       ),    
     
+    #tts=google.TTS(
+      # voice_name="en-US-Chirp3-HD-Leda",
+      # credentials_file="/root/AGENT/voicebot-booking2/google_key.json",
+      # speaking_rate=1.15,
+   #),
+     
 
     # VAD Silero
     vad=silero.VAD.load(

@@ -1,0 +1,8 @@
+{
+  "sip_trunk_id": "ST_Zo8PXDVbeCTT",
+  "room_name": "room-test",
+  "participant_identity": "sip-test",
+  "participant_name": "sip-test",
+  "sip_call_to": "3900102",
+  "wait_until_answered": false
+}

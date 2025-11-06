@@ -29,7 +29,7 @@ class AssistantAgent(Agent):
     # --- Load prompt và inject current_time ---
     def _load_prompt(self, prompt_file: str) -> str:
         file_path = os.path.join(
-            "/root/AGENT/TeleMedician/prompts", prompt_file
+            "/root/AGENT/Tele_Medician/prompts", prompt_file
         )
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"Không tìm thấy prompt file: {file_path}")
@@ -77,6 +77,59 @@ class AssistantAgent(Agent):
         await asyncio.sleep(0.5)
 
         greeting_obj = await self.session.generate_reply(
-            instructions="Bạn là trợ lý y khoa của True doc, bạn chuyên đặt lịch khám, hãy chào hỏi khách hàng thân thiện và không quá dài dòng."
+            instructions="Bạn là trợ lý y khoa, bạn chuyên đặt lịch khám, hãy chào hỏi khách hàng thân thiện và không quá dài dòng."
         )
         await greeting_obj  # Chờ done (output đã print/log realtime qua node)
+
+
+        # --- Override process_input để handle khi model trả rỗng ---
+    async def process_input(self, message: str, **kwargs):
+        """
+        Xử lý input người dùng, có timeout & fallback nếu model không trả về gì.
+        """
+        try:
+            # ✅ Giới hạn thời gian xử lý, tránh treo vô hạn
+            response_obj = await asyncio.wait_for(
+                super().process_input(message, **kwargs),
+                timeout=20,  # giây, tùy bạn
+            )
+
+            # --- Nếu model trả về mà không có nội dung ---
+            if not self.current_response.strip():
+                fallback_msg = "Xin lỗi, tôi chưa hiểu ý bạn. Bạn có thể nói lại rõ hơn không?"
+                print(f"[⚠️ No response content] {fallback_msg}")
+                self.logger.log("agent", fallback_msg)
+
+                if hasattr(self, "session"):
+                    reply = await self.session.generate_reply(instructions=fallback_msg)
+                    await reply
+                    return reply
+
+            return response_obj
+
+        except asyncio.TimeoutError:
+            # ✅ Trường hợp LLM không phản hồi trong thời gian cho phép
+            print("[⏰ Timeout] Model không phản hồi, chuyển sang fallback.")
+            fallback_msg = "Xin lỗi, hệ thống phản hồi chậm. Bạn có thể nói lại giúp tôi không?"
+            self.logger.log("agent", fallback_msg)
+
+            if hasattr(self, "session"):
+                reply = await self.session.generate_reply(instructions=fallback_msg)
+                await reply
+                return reply
+
+        except Exception as e:
+            # ✅ Trường hợp lỗi khác (network, SDK, etc)
+            print(f"[❌ process_input error]: {e}")
+            fallback_msg = "Hệ thống đang bận, vui lòng thử lại sau ít phút."
+            self.logger.log("agent", fallback_msg)
+
+            if hasattr(self, "session"):
+                reply = await self.session.generate_reply(instructions=fallback_msg)
+                await reply
+                return reply
+
+        return None
+    
+    
+

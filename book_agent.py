@@ -112,7 +112,7 @@ async def main(ctx: JobContext):
         except Exception as e:
             print(f"[ERROR] Khi shutdown lưu/gửi history: {e}")
 
-    ctx.add_shutdown_callback(save_and_send_history)
+    #ctx.add_shutdown_callback(save_and_send_history, agent_name ="medical_agent")
 
 
 # -----------------------------------------------------------
@@ -125,4 +125,5 @@ if __name__ == "__main__":
     print("🔍 LIVEKIT_API_KEY =", os.environ.get("LIVEKIT_API_KEY"))
     print("🔍 LIVEKIT_API_SECRET =", os.environ.get("LIVEKIT_API_SECRET"))
 
-    cli.run_app(WorkerOptions(entrypoint_fnc=main))
+    cli.run_app(WorkerOptions(entrypoint_fnc=main, agent_name="medical_agent"))
+    
