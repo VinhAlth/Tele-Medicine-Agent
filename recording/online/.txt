@@ -1,0 +1,84 @@
+line04] appended FINAL from KỂ CHUYỆN KINH TẾ HỌC: Hai tội phạm bị bắt và tách ra
+[DEBUG] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] STT event: SpeechEventType.END_OF_SPEECH
+[DEBUG] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] STT event: SpeechEventType.START_OF_SPEECH
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: tuyên bố từ nay chúng ta sẽ độc
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: Mỗi người có hai
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: tuyên bố từ nay chúng ta sẽ độc lập
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: Mỗi người có hai lựa chọn, im
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: tuyên bố từ nay chúng ta sẽ độc lập Mày độc lập khỏi à
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: Mỗi người có hai lựa chọn, im lặng hoặc phản bội bản
+[DEBUG] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] STT event: SpeechEventType.RECOGNITION_USAGE
+[DEBUG] [KỂ CHUYỆN CỘNG SẢN__139995104557136] STT event: SpeechEventType.RECOGNITION_USAGE
+[FINAL] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: tuyên bố từ nay chúng ta sẽ độc lập Mày độc lập khỏi à
+[SESSION] [Offline04] appended FINAL from KỂ CHUYỆN CỘNG SẢN: tuyên bố từ nay chúng ta sẽ độc lập Mày độc lập khỏi à
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: Mỗi người có hai lựa chọn, im lặng hoặc phản bội bản đồng hành của mình nếu
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Dạ đó là em Mi
+[FINAL] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: Mỗi người có hai lựa chọn im lặng hoặc phản bội bản đồng hành của mình Nếu cả hai đều im lặng
+[SESSION] [Offline04] appended FINAL from KỂ CHUYỆN KINH TẾ HỌC: Mỗi người có hai lựa chọn im lặng hoặc phản bội bản đồng hành của mình Nếu cả hai đều im lặng
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: mỗi người sẽ bị tù
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: ai Dạ đó là mị dân như em
+[FINAL] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: mỗi người sẽ bị tù một năm
+[SESSION] [Offline04] appended FINAL from KỂ CHUYỆN KINH TẾ HỌC: mỗi người sẽ bị tù một năm
+[DEBUG] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] STT event: SpeechEventType.END_OF_SPEECH
+[DEBUG] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] STT event: SpeechEventType.START_OF_SPEECH
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: ai Dạ đó là mị dân như em vẫn vâng dạ anh nè
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: Nếu cả hai đều
+[FINAL] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: ai Dạ đó là mị dân như em vẫn vâng dạ anh mà
+[SESSION] [Offline04] appended FINAL from KỂ CHUYỆN CỘNG SẢN: ai Dạ đó là mị dân như em vẫn vâng dạ anh mà
+[DEBUG] [KỂ CHUYỆN CỘNG SẢN__139995104557136] STT event: SpeechEventType.END_OF_SPEECH
+[DEBUG] [KỂ CHUYỆN CỘNG SẢN__139995104557136] STT event: SpeechEventType.START_OF_SPEECH
+[SESSION] ===== FLUSH Offline04 (6 items) =====
+[SESSION] 2025-11-17T08:57:56.906795 | KỂ CHUYỆN CỘNG SẢN: Vĩnh Thụy aka Bảo Đại
+[SESSION] 2025-11-17T08:57:58.697608 | KỂ CHUYỆN KINH TẾ HỌC: Hai tội phạm bị bắt và tách ra
+[SESSION] 2025-11-17T08:58:02.641618 | KỂ CHUYỆN CỘNG SẢN: tuyên bố từ nay chúng ta sẽ độc lập Mày độc lập khỏi à
+[SESSION] 2025-11-17T08:58:03.706621 | KỂ CHUYỆN KINH TẾ HỌC: Mỗi người có hai lựa chọn im lặng hoặc phản bội bản đồng hành của mình Nếu cả hai đều im lặng
+[SESSION] 2025-11-17T08:58:04.971486 | KỂ CHUYỆN KINH TẾ HỌC: mỗi người sẽ bị tù một năm
+[SESSION] 2025-11-17T08:58:06.106588 | KỂ CHUYỆN CỘNG SẢN: ai Dạ đó là mị dân như em vẫn vâng dạ anh mà
+[SESSION] ===== END FLUSH Offline04 =====
+[DEBUG] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] STT event: SpeechEventType.RECOGNITION_USAGE
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: Nếu cả hai đều phản bội thì mỗi người
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Liệu hồn đấy
+[DEBUG] [KỂ CHUYỆN CỘNG SẢN__139995104557136] STT event: SpeechEventType.RECOGNITION_USAGE
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: Nếu cả hai đều phản bội thì mỗi người sẽ bị tù ba năm
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Liệu hồn đấy Dù
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: Nếu cả hai đều phản bội thì mỗi người sẽ bị tù ba năm Nhưng nếu một người phản
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Liệu hồn đấy Dù tuyên bố độc lập nhưng
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Liệu hồn đấy Dù tuyên bố độc lập nhưng đế quốc Việt Nam vẫn
+[FINAL] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: nếu cả hai đều phản bội thì mỗi người sẽ bị tù ba năm Nhưng nếu một người phản bội
+[SESSION] [Offline04] appended FINAL from KỂ CHUYỆN KINH TẾ HỌC: nếu cả hai đều phản bội thì mỗi người sẽ bị tù ba năm Nhưng nếu một người phản bội
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: khi người kia im lặng
+[FINAL] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Liệu hồn đấy Dù tuyên bố độc lập nhưng đế quốc Việt Nam
+[SESSION] [Offline04] appended FINAL from KỂ CHUYỆN CỘNG SẢN: Liệu hồn đấy Dù tuyên bố độc lập nhưng đế quốc Việt Nam
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: vẫn chỉ là bù nhìn
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: khi người kia im lặng thì người phản bội
+[DEBUG] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] STT event: SpeechEventType.RECOGNITION_USAGE
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: vẫn chỉ là bù nhìn
+[FINAL] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: vẫn chỉ là bù nhìn
+[SESSION] [Offline04] appended FINAL from KỂ CHUYỆN CỘNG SẢN: vẫn chỉ là bù nhìn
+[DEBUG] [KỂ CHUYỆN CỘNG SẢN__139995104557136] STT event: SpeechEventType.END_OF_SPEECH
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: khi người kia im lặng thì người phản bội sẽ được tự do còn người
+[DEBUG] [KỂ CHUYỆN CỘNG SẢN__139995104557136] STT event: SpeechEventType.START_OF_SPEECH
+[DEBUG] [KỂ CHUYỆN CỘNG SẢN__139995104557136] STT event: SpeechEventType.RECOGNITION_USAGE
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Cờ rút này mỹ
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: khi người kia im lặng thì người phản bội sẽ được tự do còn người im lặng sẽ bị tù
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Cờ rút này Mỹ đang tập trung bem nhận
+[FINAL] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: khi người kia im lặng thì người phản bội sẽ được tự do còn người im lặng sẽ bị
+[SESSION] [Offline04] appended FINAL from KỂ CHUYỆN KINH TẾ HỌC: khi người kia im lặng thì người phản bội sẽ được tự do còn người im lặng sẽ bị
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: tù năm năm Nếu mà hai
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Crup này Mỹ đang tập trung bem nhật ở mặt trận Thái Bình Dương,
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: tù năm năm Nếu mà hai người chịu hợp tác thì
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Crook này Mỹ đang tập trung bem nhật ở mặt trận Thái Bình Dương, biết Hoa Kỳ đã
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: tù năm năm Nếu hai người chịu hợp tác thì án tù là ít nhất cho
+[SESSION] ===== FLUSH Offline04 (4 items) =====
+[SESSION] 2025-11-17T08:58:10.046388 | KỂ CHUYỆN KINH TẾ HỌC: nếu cả hai đều phản bội thì mỗi người sẽ bị tù ba năm Nhưng nếu một người phản bội
+[SESSION] 2025-11-17T08:58:11.056876 | KỂ CHUYỆN CỘNG SẢN: Liệu hồn đấy Dù tuyên bố độc lập nhưng đế quốc Việt Nam
+[SESSION] 2025-11-17T08:58:12.125939 | KỂ CHUYỆN CỘNG SẢN: vẫn chỉ là bù nhìn
+[SESSION] 2025-11-17T08:58:14.230911 | KỂ CHUYỆN KINH TẾ HỌC: khi người kia im lặng thì người phản bội sẽ được tự do còn người im lặng sẽ bị
+[SESSION] ===== END FLUSH Offline04 =====
+[DEBUG] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] STT event: SpeechEventType.RECOGNITION_USAGE
+[FINAL] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: Crup này Mỹ đang tập trung bem nhật ở mặt trận Thái Bình Dương,
+[SESSION] [Offline04] appended FINAL from KỂ CHUYỆN CỘNG SẢN: Crup này Mỹ đang tập trung bem nhật ở mặt trận Thái Bình Dương,
+[INTERIM] [KỂ CHUYỆN CỘNG SẢN__139995104557136] KỂ CHUYỆN CỘNG SẢN: biết Hoa Kỳ đang tìm kiếm đồng minh chống
+[INTERIM] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: tù năm năm Nếu hai người chịu hợp tác thì án tù là ít nhất cho cả hai nhưng vấn
+[DEBUG] [KỂ CHUYỆN CỘNG SẢN__139995104557136] STT event: SpeechEventType.RECOGNITION_USAGE
+[FINAL] [KỂ CHUYỆN KINH TẾ HỌC__139995104284048] KỂ CHUYỆN KINH TẾ HỌC: tù năm năm Nếu hai người chịu hợp tác thì án t

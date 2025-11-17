@@ -1,175 +1,310 @@
-import asyncio
-import json
+# stt_deepgram_agent.py
 import os
-import time
+import asyncio
 from datetime import datetime
 from dotenv import load_dotenv
-from typing import AsyncIterable, List, Dict, Any
-
 import aiohttp
-import livekit.agents as agents
-from livekit.agents import Agent, AgentSession, WorkerOptions, JobRequest
+import traceback
+
+from livekit import agents as lk_agents
+from livekit.agents import JobContext
 import livekit.rtc as rtc
-from livekit.agents.stt import SpeechEventType, SpeechEvent
-from livekit.plugins import google, openai
+from livekit.plugins import deepgram
 
 load_dotenv()
 
-WEBHOOK_URL = "https://portal.dev.longvan.vn/dynamic-collection/public/v2/webhook/ai_message"
-BOT_ID = "68aedccde472aa8afe432664"
+# ----------------- CONFIG -----------------
+DEEPGRAM_API_KEY = os.getenv("DEEPGRAM_API_KEY")
+WEBHOOK_URL = os.getenv("WEBHOOK_URL")  # if not set, webhook calls are skipped
+BOT_ID = os.getenv("BOT_ID", "deepgram-bot")
+FIXED_TOPIC_ID = os.getenv("FIXED_TOPIC_ID", "test-topic")
+SAMPLE_RATE = int(os.getenv("SAMPLE_RATE", "16000"))
+BUFFER_SECONDS = float(os.getenv("BUFFER_SECONDS", "0.5"))  # buffer duration to push (seconds)
+MIN_ENERGY = int(os.getenv("MIN_AUDIO_ENERGY", "1000"))  # filter near-silence buffers
+INTERIM_RESULTS = False  # set True if you want interim transcripts (for debug)
 
-# Global list to collect transcripts
-transcripts: List[Dict[str, Any]] = []
+if not DEEPGRAM_API_KEY:
+    raise RuntimeError("DEEPGRAM_API_KEY not found in env")
 
-# Danh sách phòng cố định được phép join
-ALLOWED_ROOMS = [f"PhongKham{i:02}" for i in range(1, 7)]  # PhongKham01 -> PhongKham06
+BYTES_PER_SAMPLE = 2  # 16-bit PCM
 
-async def send_messages_to_webhook(messages: List[Dict[str, Any]]):
-    async with aiohttp.ClientSession() as session:
-        for msg in messages:
-            sender_name = msg["speaker"]
-            receiver_name = "Bot" if sender_name != "Bot" else "user"
-            content_str = msg["text"]
-            body = {
-                "senderName": sender_name,
-                "senderId": "09029292222" if sender_name != "Bot" else "Bot",
-                "receiveId": "Bot" if sender_name != "Bot" else "09029292222",
-                "receiveName": receiver_name,
-                "role": True,
-                "type": "text",
-                "content": content_str,
-                "timestamp": msg["timestamp"],
-                "botId": BOT_ID,
-                "status": 1
-            }
-            try:
-                async with session.post(WEBHOOK_URL, json=body) as resp:
-                    if 200 <= resp.status < 300:
-                        print(f"Sent message from {sender_name} successfully")
-                    else:
-                        print(f"Failed to send message from {sender_name}, status: {resp.status}")
-            except Exception as e:
-                print(f"Error sending message from {sender_name}: {e}")
-            await asyncio.sleep(0.1)
+# ----------------- HELPERS -----------------
+async def send_webhook(payload: dict):
+    if not WEBHOOK_URL:
+        return
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(WEBHOOK_URL, json=payload) as resp:
+                await resp.text()  # ignore body
+    except Exception as e:
+        # don't spam; just print a short message
+        print(f"[WEBHOOK ERROR] {e}", flush=True)
 
-async def entrypoint(ctx: agents.JobContext):
-    room_name = ctx.room.name
+def make_frame_wrapper(data_bytes: bytes, sample_rate: int = SAMPLE_RATE, num_channels: int = 1):
+    """Return an object with attributes expected by some STT SDK variants."""
+    class FrameWrapper:
+        def __init__(self, data, sample_rate, num_channels):
+            self.data = data
+            self.sample_rate = sample_rate
+            self.num_channels = num_channels
+            # 16-bit PCM => 2 bytes per sample per channel
+            self.samples_per_channel = max(1, len(data) // (2 * max(1, num_channels)))
+        def __repr__(self):
+            return f"<FrameWrapper sr={self.sample_rate} ch={self.num_channels} samples={self.samples_per_channel}>"
+    return FrameWrapper(data_bytes, sample_rate, num_channels)
 
-    # # Kiểm tra phòng có được phép join không
-    # if room_name in ALLOWED_ROOMS:
-    #     print(f"Room '{room_name}' is not in allowed rooms, skipping join.")
-    #     return
+async def consume_stt_stream_iterable(stt_stream, participant_id: str):
+    """Consume STT async iterable; print and webhook final transcripts only."""
+    try:
+        async for ev in stt_stream:
+            # extract transcript robustly
+            text = None
+            if getattr(ev, "alternatives", None):
+                # prefer first non-empty alternative
+                for alt in ev.alternatives:
+                    text = getattr(alt, "transcript", None) or getattr(alt, "text", None) or text
+                    if text:
+                        break
+            else:
+                text = getattr(ev, "transcript", None) or getattr(ev, "text", None) or text
 
-    # Connect to the room
+            is_final = bool(getattr(ev, "is_final", False) or getattr(ev, "isFinal", False))
+            if text and text.strip() and is_final:
+                ts = datetime.utcnow().isoformat()
+                # minimal console output: participant + text
+                print(f"[TRANSCRIPT][{participant_id}] {text}", flush=True)
+                # send webhook
+                payload = {
+                    "senderName": participant_id,
+                    "senderId": participant_id,
+                    "type": "text",
+                    "content": text,
+                    "timestamp": ts,
+                    "botId": BOT_ID,
+                    "topicId": FIXED_TOPIC_ID,
+                    "isMessageInGroup": False,
+                    "meta": {"is_final": True}
+                }
+                await send_webhook(payload)
+    except Exception as e:
+        print(f"[STT CONSUMER ERROR] {participant_id}: {e}", flush=True)
+        traceback.print_exc()
+
+def register_stt_on_callback(stt_stream, participant_id: str):
+    """
+    If stream supports .on('transcript', cb), register a callback that posts final transcripts.
+    Returns (task, queue) but callback writes directly to webhook/print.
+    """
+    def _on_trans(ev):
+        try:
+            text = None
+            if getattr(ev, "alternatives", None):
+                for alt in ev.alternatives:
+                    text = getattr(alt, "transcript", None) or getattr(alt, "text", None) or text
+                    if text:
+                        break
+            else:
+                text = getattr(ev, "transcript", None) or getattr(ev, "text", None) or text
+            is_final = bool(getattr(ev, "is_final", False) or getattr(ev, "isFinal", False))
+            if text and text.strip() and is_final:
+                ts = datetime.utcnow().isoformat()
+                print(f"[TRANSCRIPT][{participant_id}] {text}", flush=True)
+                payload = {
+                    "senderName": participant_id,
+                    "senderId": participant_id,
+                    "type": "text",
+                    "content": text,
+                    "timestamp": ts,
+                    "botId": BOT_ID,
+                    "topicId": FIXED_TOPIC_ID,
+                    "isMessageInGroup": False,
+                    "meta": {"is_final": True}
+                }
+                # schedule webhook async (don't await in callback)
+                asyncio.create_task(send_webhook(payload))
+        except Exception as e:
+            print(f"[STT CALLBACK ERROR] {participant_id}: {e}", flush=True)
+            traceback.print_exc()
+
+    try:
+        stt_stream.on("transcript", _on_trans)
+        return True
+    except Exception:
+        return False
+
+# ----------------- MAIN ENTRYPOINT -----------------
+async def entrypoint(ctx: JobContext):
+    print("[INFO] Connecting to room...", flush=True)
     await ctx.connect()
-    print(f"Connected to allowed room: {room_name}")
+    room_name = getattr(ctx.room, "name", "unknown")
+    print(f"[INFO] Connected to room: {room_name}", flush=True)
+    print("[READY] Listening for audio tracks from all participants...", flush=True)
 
-    start_time = time.time()
-
-    # Configure Google STT
-    stt= openai.STT(
-        model="gpt-4o-mini-transcribe",  # Hoặc "whisper-1" nếu muốn
-        language="vi",                  # Tiếng Việt
+    # create deepgram plugin instance
+    stt_plugin = deepgram.STT(
+        api_key=DEEPGRAM_API_KEY,
+        model="nova-2",
+        language="vi",
+        interim_results=INTERIM_RESULTS
     )
 
+    # compute buffer threshold in bytes
+    BUFFER_BYTES = int(SAMPLE_RATE * BYTES_PER_SAMPLE * BUFFER_SECONDS)
+
     @ctx.room.on("track_subscribed")
-    def on_track_subscribed(track: rtc.RemoteTrack, publication: rtc.RemoteTrackPublication, participant: rtc.RemoteParticipant):
-        if track.kind == rtc.TrackKind.KIND_AUDIO:
-            print(f"Subscribed to audio track from participant: {participant.identity}")
-            asyncio.create_task(process_track(track, participant.identity, start_time))
-
-    async def process_track(track: rtc.RemoteTrack, speaker: str, stream_start: float):
-        stt_stream = stt.stream()
-        audio_stream = rtc.AudioStream(track)
-
-        async def process_stt_stream(stream: AsyncIterable[SpeechEvent]):
-            try:
-                async for event in stream:
-                    if event.type in (SpeechEventType.FINAL_TRANSCRIPT, SpeechEventType.INTERIM_TRANSCRIPT):
-                        if event.alternatives:
-                            is_final = event.type == SpeechEventType.FINAL_TRANSCRIPT
-                            for alt in event.alternatives:
-                                alt_text = alt.text if hasattr(alt, 'text') else alt.transcript
-                                entry = {
-                                    "speaker": speaker,
-                                    "start_time": alt.start_time + stream_start,
-                                    "end_time": alt.end_time + stream_start,
-                                    "text": alt_text,
-                                    "is_final": is_final,
-                                    "timestamp": datetime.fromtimestamp(time.time()).isoformat()
-                                }
-                                transcripts.append(entry)
-                                if is_final:
-                                    print(f"[{speaker}] [FINAL] {alt_text}")
-                                else:
-                                    print(f"[{speaker}] [INTERIM] {alt_text}")
-                        else:
-                            print(f"[{speaker}] No alternatives in event")
-            except Exception as e:
-                print(f"STT error for {speaker}: {e}")
-            finally:
-                await stream.aclose()
-
-        async with asyncio.TaskGroup() as tg:
-            stt_task = tg.create_task(process_stt_stream(stt_stream))
-
-            async for event in audio_stream:
-                frame = event.frame
-                stt_stream.push_frame(frame)
-
-            stt_stream.end_input()
-            await stt_task
-
-    # Shutdown hook: Save JSON and send messages
-    async def save_transcript():
-        print("Shutting down and saving transcripts...")
-        if transcripts:
-            filename = f"/home/redknight/voice_agent_stt/STT/transcript_{room_name}_{int(time.time())}.json"
-            os.makedirs(os.path.dirname(filename), exist_ok=True)
-            with open(filename, "w", encoding="utf-8") as f:
-                json.dump(transcripts, f, ensure_ascii=False, indent=2)
-            print(f"Saved transcript to {filename}")
-
-            await send_messages_to_webhook(transcripts)
-            transcripts.clear()
-        else:
-            print("No transcripts to save")
+    def on_track_subscribed(track: rtc.RemoteTrack, publication, participant: rtc.RemoteParticipant):
+        # only audio tracks
+        if track.kind != rtc.TrackKind.KIND_AUDIO:
+            return
+        pid = participant.identity or participant.sid or "unknown"
+        print(f"[TRACK] Subscribed audio from {pid}", flush=True)
+        asyncio.create_task(handle_audio_track(track, pid, stt_plugin, BUFFER_BYTES))
 
     @ctx.room.on("participant_disconnected")
     def on_participant_disconnected(participant: rtc.RemoteParticipant):
-        print(f"Participant {participant.identity} disconnected")
-        if len(ctx.room.remote_participants) == 0:
-            print("All participants left, saving transcript...")
-            asyncio.create_task(save_transcript())
+        pid = participant.identity or participant.sid or "unknown"
+        print(f"[DISCONNECT] Participant {pid} disconnected", flush=True)
+
+    # keep process alive
+    while True:
+        await asyncio.sleep(1)
 
 
-async def request_fnc(req: JobRequest) -> None:
-    # Luôn chấp nhận request và đặt thông tin agent
-    await req.accept(
-        name="Trợ lý khám bệnh",     # tên hiển thị trong room
-        identity="record_agent",    # định danh agent
-        # attributes={"role": "assistant"}  # tuỳ chọn thêm nếu cần
-    )
-from livekit.agents import Agent, AgentSession, WorkerOptions, JobRequest, WorkerPermissions
+# ----------------- PER-PARTICIPANT TRACK HANDLER -----------------
+async def handle_audio_track(track: rtc.RemoteTrack, participant_id: str, stt_plugin: deepgram.STT, buffer_bytes_threshold: int):
+    """
+    - create consumer BEFORE pushing frames
+    - aggregate small frames into buffer (buffer_seconds)
+    - skip near-silence buffers
+    - try push bytes; fallback to object wrapper if SDK insists on attributes
+    - only print/send final transcripts
+    """
+    SAMPLE_RATE_LOCAL = SAMPLE_RATE
+    NUM_CHANNELS = 1
+    # create stream
+    try:
+        stt_stream = stt_plugin.stream()
+    except Exception as e:
+        print(f"[ERROR] cannot create stt stream for {participant_id}: {e}", flush=True)
+        return
+
+    # start consumer BEFORE pushing frames
+    consumer_task = None
+    used_callback = False
+    if hasattr(stt_stream, "__aiter__"):
+        consumer_task = asyncio.create_task(consume_stt_stream_iterable(stt_stream, participant_id))
+    else:
+        # try register callback-style; if succeed, we don't need extra task
+        ok = register_stt_on_callback(stt_stream, participant_id)
+        used_callback = ok
+        if not ok:
+            # try iterable as fallback
+            if hasattr(stt_stream, "__aiter__"):
+                consumer_task = asyncio.create_task(consume_stt_stream_iterable(stt_stream, participant_id))
+
+    buffer_parts = []
+    pushed_frames = 0
+    wrapper_used = False
+
+    try:
+        async for frame_event in rtc.AudioStream(track):
+            frame = getattr(frame_event, "frame", None)
+            if frame is None:
+                continue
+
+            # extract bytes
+            data = getattr(frame, "data", None)
+            if data is None:
+                try:
+                    data = bytes(frame)
+                except Exception:
+                    continue
+            if isinstance(data, memoryview):
+                data = data.tobytes()
+
+            # simple energy check: sum absolute sample values (16-bit)
+            try:
+                energy = 0
+                # process as 16-bit signed little-endian
+                for i in range(0, len(data), 2):
+                    sample = int.from_bytes(data[i:i+2], "little", signed=True)
+                    energy += abs(sample)
+            except Exception:
+                energy = 0
+
+            if energy < MIN_ENERGY:
+                # skip low-energy frames
+                continue
+
+            buffer_parts.append(data)
+            total_len = sum(len(p) for p in buffer_parts)
+            if total_len < buffer_bytes_threshold:
+                continue
+
+            # we have enough buffered audio (~BUFFER_SECONDS) -> push
+            buffer_bytes = b"".join(buffer_parts)
+            buffer_parts.clear()
+
+            # push bytes, fallback wrapper if needed
+            try:
+                stt_stream.push_frame(buffer_bytes)
+                pushed_frames += 1
+            except Exception as e_push:
+                msg = str(e_push)
+                # if sdk complains about missing sample_rate or similar, fallback to wrapper
+                if ("sample_rate" in msg) or ("sampleRate" in msg) or ("sample_rate" in msg) or ("samples_per_channel" in msg) or ("sampleRate" in msg):
+                    try:
+                        wrapper = make_frame_wrapper(buffer_bytes, sample_rate=SAMPLE_RATE_LOCAL, num_channels=NUM_CHANNELS)
+                        stt_stream.push_frame(wrapper)
+                        pushed_frames += 1
+                        wrapper_used = True
+                    except Exception as e2:
+                        print(f"[ERROR] fallback wrapper push failed for {participant_id}: {e2}", flush=True)
+                        # don't crash; continue
+                        continue
+                else:
+                    # other push error -> print once and continue
+                    print(f"[ERROR] pushing frame for {participant_id}: {e_push}", flush=True)
+                    continue
+
+    except Exception as e:
+        print(f"[AUDIO STREAM ERROR] {participant_id}: {e}", flush=True)
+        traceback.print_exc()
+
+    # push remaining buffer if any
+    if buffer_parts:
+        buffer_bytes = b"".join(buffer_parts)
+        try:
+            stt_stream.push_frame(buffer_bytes)
+            pushed_frames += 1
+        except Exception:
+            try:
+                wrapper = make_frame_wrapper(buffer_bytes, sample_rate=SAMPLE_RATE_LOCAL, num_channels=NUM_CHANNELS)
+                stt_stream.push_frame(wrapper)
+                pushed_frames += 1
+                wrapper_used = True
+            except Exception as efinal:
+                print(f"[ERROR] final push failed for {participant_id}: {efinal}", flush=True)
+
+    # signal end to STT
+    try:
+        stt_stream.end_input()
+    except Exception as e:
+        print(f"[ERROR] end_input for {participant_id}: {e}", flush=True)
+
+    # wait consumer if applicable
+    if consumer_task:
+        try:
+            await consumer_task
+        except Exception as e:
+            print(f"[ERROR] stt consumer for {participant_id} crashed: {e}", flush=True)
+            traceback.print_exc()
+
+    # final minimal report
+    print(f"[DONE] {participant_id} pushed_frames={pushed_frames} wrapper_used={wrapper_used}", flush=True)
+
+
+# ----------------- RUNNER -----------------
 if __name__ == "__main__":
-    from livekit import agents
-    
-    # Define agent permissions with hidden=True
-    worker_permissions = WorkerPermissions(
-        can_publish=False, # Hidden agents cannot publish tracks
-        can_subscribe=True,
-        can_publish_data=True, # Allow data channel communication
-        hidden=True # Set the agent as hidden
-    )
-
-    agents.cli.run_app(
-        agents.WorkerOptions(
-            entrypoint_fnc=entrypoint,
-            request_fnc=request_fnc,
-            agent_name="record_agent",  
-            permissions=worker_permissions # Apply the custom permissions
-        )
-    )
-
-# -------------------------
-# Chạy Worker
+    # auto-run agent entrypoint
+    lk_agents.cli.run_app(lk_agents.WorkerOptions(entrypoint_fnc=entrypoint))

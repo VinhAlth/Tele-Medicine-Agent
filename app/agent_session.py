@@ -1,6 +1,6 @@
 import os
 from livekit.agents import AgentSession
-from livekit.plugins import google, silero, openai#, elevenlabs
+from livekit.plugins import google, silero, openai, assemblyai#, elevenlabs
 from livekit.agents.llm.mcp import MCPServerHTTP
 from datetime import timedelta
 import httpx
@@ -25,11 +25,18 @@ async def build_session():
     # Turn detection bằng mô hình đa ngôn ngữ
     turn_detection=MultilingualModel(),
 
-    # STT Google
+    #STT Google
     stt= openai.STT(
-        model="gpt-4o-mini-transcribe",  # Hoặc "whisper-1" nếu muốn
-        language="vi",                  # Tiếng Việt
+        model="gpt-4o-transcribe",  # Hoặc "whisper-1" nếu muốn
+        language="vi",         
+        prompt="Bạn hãy lắng nghe tiếng việt, và ghi nhận tiếng việt thật chuẩn xác",         # Tiếng Việt
     ),
+    # stt = assemblyai.STT(
+    #   end_of_turn_confidence_threshold=0.4,
+    #   min_end_of_turn_silence_when_confident=400,
+    #   max_turn_silence=1280,
+    # ),
+    
     # LLM Google
     llm=google.LLM(
         model="gemini-2.5-flash",

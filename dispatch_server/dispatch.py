@@ -32,7 +32,7 @@ ASSISTANT_ROOMS = {f"PhongKham{i:02}" for i in range(1, 3)}
 # NOTE: đây là các room dùng cho dispatch record_agent trong code gốc
 RECORD_ROOMS = {f"PhongHop{i:02}" for i in range(1, 2)}
 TEST_ROOMS = {f"Test{i:02}" for i in range(1, 3)}
-
+OFFLINE_ROOMS ={f"Offline{i:02}" for i in range(1,2)}
 # --- Egress-specific rooms (static sample from original egress code) ---
 # Bạn có thể thay đổi thành {f"Phong{i:02}" for i in range(1,11)} nếu muốn
 EGRESS_ROOMS = {f"Phong{i:02}" for i in range(1, 11)}
@@ -550,17 +550,24 @@ async def monitor_and_dispatch():
                         only_p = participants_resp.participants[0]
                         pid = (only_p.identity or "").strip()
                         pname = (only_p.name or "").strip()
-
+                        pid_norm = pid.lower()
+                        pname_norm = pname.lower()
                         # Bỏ qua nếu là ingress_agent
                         if pid == "ingress_agent":
                             continue
-
+                        #Tạm thời để vậy để test offline
+                        # if "bsvinh" in pid.lower() or "bsvinh" in pname.lower():
+                        #     if room_name not in dispatched_rooms:
+                        #         await dispatch_agent(lkapi, room_name, "record")
+                        #     continue
                         # ✅ Nếu người đầu tiên là bác sĩ (có 'bs' trong tên/identity, không phân biệt hoa thường)
                         if "bs" in pid.lower() or "bs" in pname.lower():
                             if room_name not in doctor_first_rooms:
                                 doctor_first_rooms.add(room_name)
                                 print(f"{now()} 👨‍⚕️ Room {room_name}: bác sĩ vào trước → không dispatch agent (chỉ log 1 lần).")
                             continue
+
+
 
 
                     agent_name = None
@@ -574,6 +581,8 @@ async def monitor_and_dispatch():
                         agent_name = "test_agent"
                     elif room_name in redis_rooms:
                         agent_name = "assistant_agent"
+                    elif room_name in OFFLINE_ROOMS:
+                        agent_name ="record"
 
                     if agent_name:
                         await dispatch_agent(lkapi, room_name, agent_name)
